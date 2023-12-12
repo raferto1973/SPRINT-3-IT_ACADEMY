@@ -1,6 +1,8 @@
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
-  let result =  ???;
+function getAllDirectors(movies) {
+  let result =[] ;
+  result = movies.map (movie => movie.director); 
+
   console.log("EXERCICE 1 ->", result);
   return result;
 }
@@ -38,7 +40,7 @@ function hoursToMinutes() {
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
   
-}
+} 
 
 
 

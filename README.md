@@ -42,7 +42,7 @@ $ git push origin master
 
 3. Upload the link to the virtual campus so that your mentor can correct it and give you feedback.
 
-
+ 
 
 <br>
 
@@ -52,7 +52,7 @@ The statement of the exercise is available on the virtual campus.
 
 <br>
 
-## Tests!
+## Tests! 
 
 
 ```shell

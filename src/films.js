@@ -3,7 +3,7 @@ function getAllDirectors(movies) {
 
     let directorList = [];
 
-    // Extraer el director   
+    // Extraemos el director   
     directorList = movies.map(movie => movie.director);
 
     console.log("EXERCICE 1 ->", directorList);
@@ -37,22 +37,23 @@ function moviesAverageOfDirector(movies, director) {
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies) {
 
-    // Extraer los títulos
+    // Extraemos los títulos
     const moviesSortAlpabetically =  movies.map(movie => movie.title);
     
-    // Ordenar alfabéticamente
+    // Ordenamos alfabéticamente
     const top20Titles = moviesSortAlpabetically.sort();
 
-    // Devolver las 20 primeras películas
+    // Devolvemos las 20 primeras películas
     return top20Titles.slice(0, 20);     
 }
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-    // Extraer los años y títulos
+
+    // Extraemos los años y títulos
     const moviesWithYear = movies.map(movie => ({ year: movie.year, title: movie.title }));
 
-    // Ordenar por año de forma ascendente y luego por título alfabéticamente
+    // Ordenamos por año de forma ascendente y luego por título alfabéticamente
     const moviesOrderByYear = moviesWithYear.sort((a, b) => {
     if (a.year !== b.year) {
         return a.year - b.year;
@@ -61,13 +62,25 @@ function orderByYear(movies) {
     }
     });
 
-    // Devolver el array ordenado
+    // Devolvemos el array ordenado
     return moviesOrderByYear;
 }
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
-}
+function moviesAverageByCategory(movies, category) {
+        // Filtrar las películas por la categoría específica
+        const filteredMovies = movies.filter(movie => movie.genre.includes(category));
+    
+        // Calcular la nota media de las películas de la categoría
+        if (filteredMovies.length === 0) {
+        return 0; // Si no hay películas en la categoría, la nota media es 0
+        }
+    
+        const totalScore = filteredMovies.reduce((sum, movie) => sum + movie.score, 0);
+        const averageScore = totalScore / filteredMovies.length;
+    
+        // Redondear la nota media a dos decimales
+        return parseFloat(averageScore.toFixed(2));
+  }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {

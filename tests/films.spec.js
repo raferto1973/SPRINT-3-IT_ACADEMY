@@ -293,6 +293,35 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 
+describe('Function "moviesAverageByCategory"', () => {
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
+  });
+
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
+  });
+
+  it('should be different from NaN', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).not.toBeNaN();
+  });
+
+  it('should return the average score of movies in the specified category. With 2 decimals!', () => {
+    expect(moviesAverageByCategory([
+      { genre: ['Drama'], score: 8.4 },
+      { genre: ['Drama'], score: 7.5 },
+      { genre: ['Action'], score: 6.8 },
+    ], 'Drama')).toBe(7.95);
+  });
+
+  it('should return 0 if there are no movies in the specified category', () => {
+    expect(moviesAverageByCategory([
+      { genre: ['Action'], score: 6.8 },
+      { genre: ['Comedy'], score: 7.2 },
+    ], 'Drama')).toBe(0);
+  });
+});
+
 
 // Exercise 7
 describe('Function "hoursToMinutes"', () => {

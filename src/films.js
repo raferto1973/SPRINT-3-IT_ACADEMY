@@ -67,24 +67,48 @@ function orderByYear(movies) {
 }
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies, category) {
-        // Filtrar las películas por la categoría específica
-        const filteredMovies = movies.filter(movie => movie.genre.includes(category));
-    
-        // Calcular la nota media de las películas de la categoría
-        if (filteredMovies.length === 0) {
-        return 0; // Si no hay películas en la categoría, la nota media es 0
-        }
-    
-        const totalScore = filteredMovies.reduce((sum, movie) => sum + movie.score, 0);
-        const averageScore = totalScore / filteredMovies.length;
-    
-        // Redondear la nota media a dos decimales
-        return parseFloat(averageScore.toFixed(2));
+
+    // Filtramos las películas por la categoría específica
+    const filteredMovies = movies.filter(movie => movie.genre.includes(category));
+
+    // Calculamos la nota media de las películas de la categoría
+    if (filteredMovies.length === 0) {
+    return 0; // Si no hay películas en la categoría, la nota media es 0
+    }
+
+    const totalScore = filteredMovies.reduce((sum, movie) => sum + movie.score, 0);
+    const averageScore = totalScore / filteredMovies.length;
+
+    // Redondeamos la nota media a dos decimales
+    return parseFloat(averageScore.toFixed(2));
   }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(movies) {
+      
+    return movies.map(movie => {
+        console.log(`Procesando película: ${movie.title}, Duración: ${movie.duration}`);
+    
+        const match = movie.duration.match(/(\d+)h\s*(\d*)/);
+    
+        if (match) {
+          const hours = parseInt(match[1]);
+          const minutes = match[2] ? parseInt(match[2]) : 0;
+    
+          const durationInMinutes = hours * 60 + minutes;
+    
+          console.log(`Duración convertida: ${durationInMinutes} minutos`);
+    
+          return {
+            ...movie,
+            duration: durationInMinutes,
+          };
+        } else {
+          // Manejar casos donde el formato de duración no es el esperado
+          console.error(`Error: formato de duración no válido para la película ${movie.title}`);
+          return movie;
+        }
+      });
 }
 
 // Exercise 8: Get the best film of a year

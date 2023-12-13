@@ -49,17 +49,21 @@ function orderAlphabetically(movies) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-  
     // Extraer los años y títulos
     const moviesWithYear = movies.map(movie => ({ year: movie.year, title: movie.title }));
-  
-    // Ordenar por año de forma ascendente
-    const moviesOrderByYear = moviesWithYear.sort((a, b) => a.year - b.year);
-  
-    // Devolver el array con un solo elemento (el objeto con el año más bajo)
-    return [moviesOrderByYear[0]];
-}
 
+    // Ordenar por año de forma ascendente y luego por título alfabéticamente
+    const moviesOrderByYear = moviesWithYear.sort((a, b) => {
+    if (a.year !== b.year) {
+        return a.year - b.year;
+    } else {
+        return a.title.localeCompare(b.title);
+    }
+    });
+
+    // Devolver el array ordenado
+    return moviesOrderByYear;
+}
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
 

@@ -104,7 +104,7 @@ function hoursToMinutes(movies) {
             duration: durationInMinutes,
           };
         } else {
-          // Manejar casos donde el formato de duración no es el esperado
+          // Casos donde el formato de duración no es el esperado
           console.error(`Error: formato de duración no válido para la película ${movie.title}`);
           return movie;
         }
@@ -112,11 +112,22 @@ function hoursToMinutes(movies) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
 
-}
+function bestFilmOfYear(movies, year) {
 
-
+    // Filtramos las películas del año especificado
+    const filmOfYear = movies.filter(movie => movie.year === year);
+  
+    // Ordena las películas por puntuación de mayor a menor
+    const bestFilmsOfTheYear = filmOfYear.sort((a, b) => b.score - a.score);
+  
+    // Devuelve la mejor película del año como un array (o un array vacío)
+    return bestFilmsOfTheYear.length > 0 ? [bestFilmsOfTheYear[0]] : [];
+  }
+  
+  
+  
+  
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
